@@ -10,8 +10,12 @@
     $stateProvider
     .state('home',{
       url:'/home',
-      templateUrl:'templates/home.template.html',
+      templateUrl: 'templates/home.template.html'
       // template:'<h1>hiiiii</h1>'
+    })
+    .state('categories',{
+      url:'/categories',
+      templateUrl:'templates/categories.template.html'
     });
   }
 }());
