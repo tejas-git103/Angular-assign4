@@ -1,5 +1,3 @@
-<h1>yo in category list</h1>
-  
-  <ul >
-    <li ng-repeat="item in list" >{{item}}</li>
-  </ul>
+<ul >
+    <li ng-repeat="item in $ctrl.list" ui-sref="item({shortName : item.short_name})"><button >{{item.name}}  {{item.id}}</button></li>
+</ul>

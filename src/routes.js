@@ -15,7 +15,30 @@
     })
     .state('categories',{
       url:'/categories',
-      templateUrl:'templates/categories.template.html'
-    });
+      templateUrl:'templates/categories.template.html',
+      controller:'CategoriesController as catctrl',
+      resolve: {
+        list: ['MenuDataService', function (MenuDataService) {
+          return MenuDataService.getAllCategories();
+        }]
+        // list: function () {
+        //     return ['ds','rt','ghd','sddsf'];
+        // }
+      }
+    })
+    .state('item', {
+      url: '/item/{shortName}',
+      templateUrl: 'templates/items.template.html',
+      controller: 'menuItemController as menu',
+      resolve: {
+          items: ['MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
+              return MenuDataService.getItemsForCategory($stateParams.shortName);
+          }]
+          // items: function () {
+          //   return [80,81,82,83];
+          // }
+      }
+  });
+
   }
 }());
